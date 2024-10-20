@@ -1,7 +1,7 @@
 [package]
-name = "autopilot"
+name = "jbogs-autopilot"
 version = "0.4.0"
-authors = ["Michael Sanders <crates@michaelsande.rs>"]
+authors = ["Michael Sanders <crates@michaelsande.rs>, Jbogs"]
 description = "A simple, cross-platform GUI automation library for Rust."
 homepage = "https://www.autopy.org"
 readme = "README.md"

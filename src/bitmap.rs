@@ -542,12 +542,12 @@ fn system_capture_screen_portion(rect: Rect) -> ImageResult<Bitmap> {
 
     let buflen: usize = rect.size.height as usize * bytewidth;
     let buffer: &[u8] = unsafe { std::slice::from_raw_parts(data as *mut u8, buflen) };
-    let mut img = DynamicImage::new_rgb8(rect.size.width as u32, rect.size.height as u32);
+    let mut img = DynamicImage::new_rgba8(rect.size.width as u32, rect.size.height as u32);
     for x in 0..rect.size.width as usize {
         for y in 0..rect.size.height as usize {
             let offset: usize = bytewidth * y + bytes_per_pixel * x;
-            let (b, g, r) = (buffer[offset], buffer[offset + 1], buffer[offset + 2]);
-            img.put_pixel(x as u32, y as u32, Rgba([r, g, b, 255]));
+            let (b, g, r, a) = (buffer[offset], buffer[offset + 1], buffer[offset + 2], buffer[offset + 3]);
+            img.put_pixel(x as u32, y as u32, Rgba([r, g, b, a]));
         }
     }
 
